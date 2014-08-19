@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" ng-app="ngWaitstaffApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Waitstaff Calc</title>
+    <link href="./reset.css" rel="stylesheet" type="text/css">
+    <link href="./main.css"  rel="stylesheet" type="text/css">
+    <script src="./jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="./bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="./bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="./waitstaff.js"></script>
+</head>
+<!--<body ng-controller='waitstaffCtrl'>-->
+<body>
+    <div class="container">
+        <h1>Waitstaff Calculator</h1> 
+        <ul class="mynav">
+            <li><a href="#/">Home</a></li><!--
+         --><li><a href="#/newmeal">NewMeal</a></li><!--
+         --><li><a href="#/myearnings">My Earnings</a></li>
+        </ul>
+
+        <div ng-view></div>
+
+    </div>
+</body>
+</html>

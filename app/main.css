@@ -1,0 +1,51 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.container {
+    position:relative;
+    margin: auto;
+    padding:1rem;
+    padding-bottom:2rem;
+    width:630px;
+    text-align:center;
+    text-align: -webkit-center;
+}
+
+.mynav {
+    margin-top:20px;
+}
+.mynav li {
+    display:inline-block;
+    padding:0 10px;
+}
+.mynav li:first-child {
+    border-right:2px solid #000;
+}
+.mynav li:last-child {
+    border-left:2px solid #000;
+}
+
+/* "Home" view */
+p.home, ul.home {
+    text-align:left;
+}
+p.home {
+    margin-top:10px;
+    max-width: 435px;
+}
+    p.home:first-child {
+        margin-top:30px;
+    }
+ul.home {
+    list-style-type:disc;
+    margin-top:5px;
+    max-width: 400px;
+}
+

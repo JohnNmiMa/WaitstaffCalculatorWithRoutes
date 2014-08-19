@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" ng-app="ngWaitstaffApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Waitstaff Calc</title>
+    <link href="./reset.css" rel="stylesheet" type="text/css">
+    <link href="./main.css"  rel="stylesheet" type="text/css">
+    <script src="./jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="./bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="./bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="./waitstaff.js"></script>
+</head>
+<body ng-controller='waitstaffCtrl'>
+    <div class="container">
+        <h1>Waitstaff Calculator</h1> 
+        <section id="meal">
+            <h4>Enter the Meal Details</h4>
+            <div class="divider"></div>
+            <form ng-controller="mealFormCtrl" ng-submit="submit()" name="mealForm" novalidate>
+                <table>
+                    <tr>
+                        <td class="textcol">Base Meal Price: $</td>
+                        <td><input type="number" id="bmp" ng-model="data.bmp" required></td>
+                    </tr>
+                    <tr>
+                        <td class="textcol">Tax Rate: %</td>
+                        <td><input type="number" id="taxRate" ng-model="data.taxRate" required></td>
+                    </tr>
+                    <tr>
+                        <td class="textcol">Tip Percentage: %</td>
+                        <td><input type="number" id="tip" ng-model="data.tipPcnt" required></td>
+                    </tr>
+                </table>
+                <p class="showError" ng-if="submitted && error==='number'">
+                   Please enter numbers in all fields</p>
+                <p class="showError" ng-if="submitted && error==='required'">
+                   Please fill in all fields</p>
+                <center>
+                    <button type="submit">Submit</button>
+                    <button type="button" ng-click="resetForm()">Cancel</button>
+                </center>
+            </form>
+        </section>
+        <div id="charges_earnings">
+            <section id="charges" ng-controller="chargesCtrl">
+                <h4>Customer Charges</h4>
+                <div class="divider"></div>
+                <table>
+                    <tr>
+                        <td class="textcol">Subtotal:</td>
+                        <td>${{subtotal|number:2}}</td>
+                    </tr>
+                    <tr>
+                        <td class="textcol bottom-border">Tip:</td>
+                        <td class="bottom-border">${{tip|number:2}}</td>
+                    </tr>
+                    <tr>
+                        <td class="textcol">Total:</td>
+                        <td>${{total|number:2}}</td>
+                    </tr>
+                </table>
+            </section>
+            <section id="earnings" ng-controller="earningsCtrl">
+                <h4>My Earnings Info</h4>
+                <div class="divider"></div>
+                <table>
+                    <tr>
+                        <td class="textcol">Tip Total:</td>
+                        <td>${{tipTotal|number:2}}</td>
+                    </tr>
+                    <tr>
+                        <td class="textcol">Meal Count:</td>
+                        <td>{{mealCount|number:0}}</td>
+                    </tr>
+                    <tr>
+                        <td class="textcol">Average Tip Per Meal:</td>
+                        <td>${{avgTPM|number:2}}</td>
+                    </tr>
+                </table>
+            </section>
+            <button id="resetBtn" type="button" ng-click="resetCalc()">Reset</button>
+        </div>
+    </div>
+</body>
+</html>

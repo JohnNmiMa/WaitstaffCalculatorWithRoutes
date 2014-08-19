@@ -1,0 +1,25 @@
+{
+  "name": "waitstaff-calculator",
+  "version": "0.0.0",
+  "authors": [
+    "John <johnmarksjr@gmail.com>"
+  ],
+  "description": "Waitstaff Calculator using AngularJS routing",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.2.22",
+    "angular": "~1.2.22"
+  }
+}
