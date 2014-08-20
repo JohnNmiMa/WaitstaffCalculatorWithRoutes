@@ -2,17 +2,26 @@ angular.module('ngWaitstaffApp', ['ngRoute'])
 
 .constant('DEFAULT_TAX_RATE', 7.35)
 
+//.value('earnings', {'tipTotal':0, 'avgTPM':0, 'mealCount':0})
+.value('earnings', [])
+
 .config(function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl : './home.html',
         controller : 'HomeCtrl'
-    }).when('/newmeal', {
+    }).when('/new-meal', {
         templateUrl : './newmeal.html',
         controller : 'NewMealCtrl'
+    }).when('/earnings', {
+        templateUrl : './earnings.html',
+        controller : 'EarningsCtrl'
     });
 })
 
 .controller('waitstaffCtrl', function($scope) {
+    $scope.$on('updateEarnings', function(event,data) {
+        $scope.$broadcast('updateEarningsCtrl', data);
+    });
     $scope.resetCalc = function() {
         $scope.$broadcast('resetCtrl', true);
     }
@@ -21,7 +30,7 @@ angular.module('ngWaitstaffApp', ['ngRoute'])
 .controller('HomeCtrl', function($scope) {
 })
 
-.controller('NewMealCtrl', function($scope, DEFAULT_TAX_RATE) {
+.controller('NewMealCtrl', function($scope, earnings, DEFAULT_TAX_RATE) {
     $scope.data = {};
     $scope.subtotal = $scope.tip = $scope.total = null;
     $scope.init = function() {
@@ -36,6 +45,8 @@ angular.module('ngWaitstaffApp', ['ngRoute'])
     $scope.submit = function() {
         if($scope.mealForm.$valid) {
             updateCharges($scope.data);
+            updateEarnings($scope.data);
+            $scope.$emit('updateEarnings', $scope.data);
             $scope.resetForm();
         } else {
             if ($scope.mealForm.$error.required) {
@@ -50,21 +61,39 @@ angular.module('ngWaitstaffApp', ['ngRoute'])
         }
     }
 
-    $scope.resetForm = function() {
-        $scope.init();
-        $scope.mealForm.$setPristine();
-    }
-
     function updateCharges(data) {
         $scope.subtotal = data['bmp'] + (data['bmp'] * data['taxRate']/100);
         $scope.tip = data['bmp'] * data['tipPcnt']/100;
         $scope.total = $scope.subtotal + $scope.tip;
     };
 
+    function updateEarnings(data) {
+        //var mealEntry = {'bmp':data.bmp, 'taxRate':data.taxRate, 'tipPcnt':data.tipPcnt};
+        earnings.push({'bmp':data.bmp, 'taxRate':data.taxRate, 'tipPcnt':data.tipPcnt});
+    };
+
+    $scope.resetForm = function() {
+        $scope.init();
+        $scope.mealForm.$setPristine();
+    }
+
     $scope.$on('resetCtrl', function(event, data) {
         $scope.resetForm();
     });
     $scope.init();
 
-});
+})
 
+.controller('EarningsCtrl', function($scope, earnings) {
+    $scope.tipTotal = $scope.mealCount = $scope.avgTPM = 0;
+    for (meal in earnings) {
+        $scope.tipTotal += earnings[meal].bmp * earnings[meal].tipPcnt/100;
+        $scope.mealCount += 1;
+        $scope.avgTPM = $scope.tipTotal / $scope.mealCount;
+    }
+
+    $scope.$on('resetCtrl', function(event, data) {
+        earnings.length = 0;
+        $scope.tipTotal = $scope.mealCount = $scope.avgTPM = 0;
+    });
+});

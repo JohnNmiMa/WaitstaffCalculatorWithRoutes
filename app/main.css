@@ -58,9 +58,8 @@ body {
         border:2px solid black;
         padding:0 20px;
     }
+
     #meal {
-        /*display:inline-block;*/
-        /*vertical-align:top;*/
     }
         h1 {
             text-align:center;
@@ -101,24 +100,23 @@ body {
             -webkit-appearance: none;
             margin: 0;
         }
-    td {
-        font-size:.90em;
-        padding:5px 3px;
+
+    table {
     }
-    td.textcol {
-        text-align:right;
+        td {
+            font-size:.90em;
+            padding:5px 3px;
+        }
+        td.textcol {
+            text-align:right;
+        }
+
+    #resetBtn {
+        margin-top: 15px;
     }
 
-    #charges_earnings {
-        display:inline-block;
-        vertical-align:top;
-        margin-left:30px;
-    }
-        #charges_earnings .divider {
-            border-top:2px solid black;
-        }
-        .totaldivider {
-            border-top:2px solid black;
-            margin-top:4px;
-            margin-bottom:7px;
-        }
+button {
+    border-radius: 2px;
+    background-color:#fff;
+    padding:5px 10px;
+}

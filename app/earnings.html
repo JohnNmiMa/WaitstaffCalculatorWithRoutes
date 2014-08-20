@@ -1,0 +1,21 @@
+<section id="earnings">
+    <h4>My Earnings Info</h4>
+    <div class="divider"></div>
+    <table>
+        <tr>
+            <td class="textcol">Tip Total:</td>
+            <td>${{tipTotal|number:2}}</td>
+        </tr>
+        <tr>
+            <td class="textcol">Meal Count:</td>
+            <td>{{mealCount|number:0}}</td>
+        </tr>
+        <tr>
+            <td class="textcol">Average Tip Per Meal:</td>
+            <td>${{avgTPM|number:2}}</td>
+        </tr>
+    </table>
+</section>
+<center>
+    <button id="resetBtn" type="button" ng-click="resetCalc()">Reset</button>
+</center>
