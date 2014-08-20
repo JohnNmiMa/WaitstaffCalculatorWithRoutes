@@ -13,13 +13,12 @@ body {
     margin: auto;
     padding:1rem;
     padding-bottom:2rem;
-    width:630px;
     text-align:center;
     text-align: -webkit-center;
 }
 
 .mynav {
-    margin-top:20px;
+    margin-top:15px;
 }
 .mynav li {
     display:inline-block;
@@ -32,20 +31,94 @@ body {
     border-left:2px solid #000;
 }
 
-/* "Home" view */
-p.home, ul.home {
-    text-align:left;
-}
-p.home {
-    margin-top:10px;
-    max-width: 435px;
-}
-    p.home:first-child {
-        margin-top:30px;
-    }
-ul.home {
-    list-style-type:disc;
-    margin-top:5px;
-    max-width: 400px;
+.theview {
+    padding:0 30px;
 }
 
+    /* "Home" view */
+    p.home, ul.home {
+        text-align:left;
+    }
+    p.home {
+        margin-top:10px;
+        max-width: 435px;
+    }
+        p.home:first-child {
+            margin-top:30px;
+        }
+    ul.home {
+        list-style-type:disc;
+        margin-top:5px;
+        max-width: 400px;
+    }
+
+    #meal, #charges, #earnings {
+        max-width:300px;
+        margin-top:15px;
+        border:2px solid black;
+        padding:0 20px;
+    }
+    #meal {
+        /*display:inline-block;*/
+        /*vertical-align:top;*/
+    }
+        h1 {
+            text-align:center;
+        }
+        .divider {
+            border-top:2px solid black;
+            margin:7px -18px;
+        }
+        h4 {
+            margin-top:7px;
+        }
+        #bmp {
+            width: 100px;
+        }
+        #taxRate {
+            width: 50px;
+        }
+        #tip {
+            width: 35px;
+        }
+        form[name="mealForm"] {
+            position:relative;
+        }
+            form .showError {
+                position:absolute;
+                margin-top:4px;
+                padding:0 15px;
+                left:0;
+                color:red;
+                font-size:.8em;
+            }
+        form center {
+            margin-top:25px;
+            margin-bottom:10px;
+        }
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    td {
+        font-size:.90em;
+        padding:5px 3px;
+    }
+    td.textcol {
+        text-align:right;
+    }
+
+    #charges_earnings {
+        display:inline-block;
+        vertical-align:top;
+        margin-left:30px;
+    }
+        #charges_earnings .divider {
+            border-top:2px solid black;
+        }
+        .totaldivider {
+            border-top:2px solid black;
+            margin-top:4px;
+            margin-bottom:7px;
+        }
