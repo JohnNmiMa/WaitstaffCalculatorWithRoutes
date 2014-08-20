@@ -2,7 +2,6 @@ angular.module('ngWaitstaffApp', ['ngRoute'])
 
 .constant('DEFAULT_TAX_RATE', 7.35)
 
-//.value('earnings', {'tipTotal':0, 'avgTPM':0, 'mealCount':0})
 .value('earnings', [])
 
 .config(function($routeProvider) {
@@ -15,7 +14,8 @@ angular.module('ngWaitstaffApp', ['ngRoute'])
     }).when('/earnings', {
         templateUrl : './earnings.html',
         controller : 'EarningsCtrl'
-    });
+    })
+    .otherwise({ redirectTo : '/' });
 })
 
 .controller('waitstaffCtrl', function($scope) {
@@ -68,7 +68,6 @@ angular.module('ngWaitstaffApp', ['ngRoute'])
     };
 
     function updateEarnings(data) {
-        //var mealEntry = {'bmp':data.bmp, 'taxRate':data.taxRate, 'tipPcnt':data.tipPcnt};
         earnings.push({'bmp':data.bmp, 'taxRate':data.taxRate, 'tipPcnt':data.tipPcnt});
     };
 
