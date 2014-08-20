@@ -17,17 +17,17 @@ body {
     text-align: -webkit-center;
 }
 
-.mynav {
+.linkbar {
     margin-top:15px;
 }
-.mynav li {
+.linkbar li {
     display:inline-block;
     padding:0 10px;
 }
-.mynav li:first-child {
+.linkbar li:first-child {
     border-right:2px solid #000;
 }
-.mynav li:last-child {
+.linkbar li:last-child {
     border-left:2px solid #000;
 }
 
@@ -36,31 +36,26 @@ body {
 }
 
     /* "Home" view */
-    p.home, ul.home {
+    .home p, .home ul {
         text-align:left;
-    }
-    p.home {
-        margin-top:10px;
-        max-width: 435px;
-    }
-        p.home:first-child {
-            margin-top:30px;
-        }
-    ul.home {
-        list-style-type:disc;
-        margin-top:5px;
         max-width: 400px;
+        margin-top:10px;
+    }
+    .home p:first-child {
+        margin-top:30px;
+    }
+    .home ul {
+        list-style-type:disc;
+        padding:0 18px;
     }
 
-    #meal, #charges, #earnings {
+    .meal, .charges, .earnings {
         max-width:300px;
         margin-top:15px;
         border:2px solid black;
         padding:0 20px;
     }
 
-    #meal {
-    }
         h1 {
             text-align:center;
         }
@@ -114,6 +109,10 @@ body {
     #resetBtn {
         margin-top: 15px;
     }
+
+.bottom-border {
+    border-bottom: 2px solid black;
+}
 
 button {
     border-radius: 2px;
