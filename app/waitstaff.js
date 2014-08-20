@@ -18,15 +18,6 @@ angular.module('ngWaitstaffApp', ['ngRoute'])
     .otherwise({ redirectTo : '/' });
 })
 
-.controller('waitstaffCtrl', function($scope) {
-    $scope.$on('updateEarnings', function(event,data) {
-        $scope.$broadcast('updateEarningsCtrl', data);
-    });
-    $scope.resetCalc = function() {
-        $scope.$broadcast('resetCtrl', true);
-    }
-})
-
 .controller('HomeCtrl', function($scope) {
 })
 
@@ -46,7 +37,6 @@ angular.module('ngWaitstaffApp', ['ngRoute'])
         if($scope.mealForm.$valid) {
             updateCharges($scope.data);
             updateEarnings($scope.data);
-            $scope.$emit('updateEarnings', $scope.data);
             $scope.resetForm();
         } else {
             if ($scope.mealForm.$error.required) {
@@ -91,8 +81,8 @@ angular.module('ngWaitstaffApp', ['ngRoute'])
         $scope.avgTPM = $scope.tipTotal / $scope.mealCount;
     }
 
-    $scope.$on('resetCtrl', function(event, data) {
+    $scope.resetCalc = function() {
         earnings.length = 0;
         $scope.tipTotal = $scope.mealCount = $scope.avgTPM = 0;
-    });
+    }
 });
