@@ -1,46 +1,48 @@
-<section class="meal">
-    <h4>Enter the Meal Details</h4>
-    <div class="divider"></div>
-    <form ng-submit="submit()" name="mealForm" novalidate>
+<section class="meal-container">
+    <section class="meal" ng-class="{shake:doShake}">
+        <h4>Enter the Meal Details</h4>
+        <div class="divider"></div>
+        <form ng-submit="submit()" name="mealForm" novalidate>
+            <table>
+                <tr>
+                    <td class="textcol">Base Meal Price: $</td>
+                    <td><input type="number" id="bmp" ng-model="data.bmp" required></td>
+                </tr>
+                <tr>
+                    <td class="textcol">Tax Rate: %</td>
+                    <td><input type="number" id="taxRate" ng-model="data.taxRate" required></td>
+                </tr>
+                <tr>
+                    <td class="textcol">Tip Percentage: %</td>
+                    <td><input type="number" id="tip" ng-model="data.tipPcnt" required></td>
+                </tr>
+            </table>
+            <p class="showError" ng-if="submitted && error==='number'">
+               Please enter numbers in all fields</p>
+            <p class="showError" ng-if="submitted && error==='required'">
+               Please fill in all fields</p>
+            <center>
+                <button type="submit">Submit</button>
+                <button type="button" ng-click="resetForm(true)">Cancel</button>
+            </center>
+        </form>
+    </section>
+    <section class="charges">
+        <h4>Customer Charges</h4>
+        <div class="divider"></div>
         <table>
             <tr>
-                <td class="textcol">Base Meal Price: $</td>
-                <td><input type="number" id="bmp" ng-model="data.bmp" required></td>
+                <td class="textcol">Subtotal:</td>
+                <td>${{subtotal|number:2}}</td>
             </tr>
             <tr>
-                <td class="textcol">Tax Rate: %</td>
-                <td><input type="number" id="taxRate" ng-model="data.taxRate" required></td>
+                <td class="textcol bottom-border">Tip:</td>
+                <td class="bottom-border">${{tip|number:2}}</td>
             </tr>
             <tr>
-                <td class="textcol">Tip Percentage: %</td>
-                <td><input type="number" id="tip" ng-model="data.tipPcnt" required></td>
+                <td class="textcol">Total:</td>
+                <td>${{total|number:2}}</td>
             </tr>
         </table>
-        <p class="showError" ng-if="submitted && error==='number'">
-           Please enter numbers in all fields</p>
-        <p class="showError" ng-if="submitted && error==='required'">
-           Please fill in all fields</p>
-        <center>
-            <button type="submit">Submit</button>
-            <button type="button" ng-click="resetForm()">Cancel</button>
-        </center>
-    </form>
-</section>
-<section class="charges">
-    <h4>Customer Charges</h4>
-    <div class="divider"></div>
-    <table>
-        <tr>
-            <td class="textcol">Subtotal:</td>
-            <td>${{subtotal|number:2}}</td>
-        </tr>
-        <tr>
-            <td class="textcol bottom-border">Tip:</td>
-            <td class="bottom-border">${{tip|number:2}}</td>
-        </tr>
-        <tr>
-            <td class="textcol">Total:</td>
-            <td>${{total|number:2}}</td>
-        </tr>
-    </table>
+    </section>
 </section>

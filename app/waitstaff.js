@@ -1,4 +1,4 @@
-angular.module('ngWaitstaffApp', ['ngRoute'])
+angular.module('ngWaitstaffApp', ['ngRoute', 'ngAnimate'])
 
 .constant('DEFAULT_TAX_RATE', 7.35)
 
@@ -21,7 +21,14 @@ angular.module('ngWaitstaffApp', ['ngRoute'])
 .controller('HomeCtrl', function($scope) {
 })
 
+.controller('MainCtrl', function($scope) {
+    $scope.htemplate = 'home.html';
+    $scope.ntemplate = 'newmeal.html';
+    $scope.etemplate = 'earnings.html';
+})
+
 .controller('NewMealCtrl', function($scope, earnings, DEFAULT_TAX_RATE) {
+    $scope.doShake = false;
     $scope.data = {};
     $scope.subtotal = $scope.tip = $scope.total = null;
     $scope.init = function() {
@@ -37,7 +44,7 @@ angular.module('ngWaitstaffApp', ['ngRoute'])
         if($scope.mealForm.$valid) {
             updateCharges($scope.data);
             updateEarnings($scope.data);
-            $scope.resetForm();
+            $scope.resetForm(false);
         } else {
             if ($scope.mealForm.$error.required) {
                 $scope.error = 'required';
@@ -61,19 +68,23 @@ angular.module('ngWaitstaffApp', ['ngRoute'])
         earnings.push({'bmp':data.bmp, 'taxRate':data.taxRate, 'tipPcnt':data.tipPcnt});
     };
 
-    $scope.resetForm = function() {
+    $scope.resetForm = function(isCancel) {
+        if (isCancel == true) {
+            $scope.doShake = !$scope.doShake;
+        }
         $scope.init();
         $scope.mealForm.$setPristine();
     }
 
     $scope.$on('resetCtrl', function(event, data) {
-        $scope.resetForm();
+        $scope.resetForm(true);
     });
     $scope.init();
 
 })
 
 .controller('EarningsCtrl', function($scope, earnings) {
+    $scope.doShake = false;
     $scope.tipTotal = $scope.mealCount = $scope.avgTPM = 0;
     for (meal in earnings) {
         $scope.tipTotal += earnings[meal].bmp * earnings[meal].tipPcnt/100;
@@ -82,6 +93,7 @@ angular.module('ngWaitstaffApp', ['ngRoute'])
     }
 
     $scope.resetCalc = function() {
+        $scope.doShake = !$scope.doShake;
         earnings.length = 0;
         $scope.tipTotal = $scope.mealCount = $scope.avgTPM = 0;
     }

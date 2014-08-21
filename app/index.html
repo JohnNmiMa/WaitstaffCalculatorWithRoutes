@@ -4,13 +4,15 @@
 	<meta charset="UTF-8">
 	<title>Waitstaff Calc</title>
     <link href="./reset.css" rel="stylesheet" type="text/css">
+    <!--<link href="./animate.css"  rel="stylesheet" type="text/css">-->
     <link href="./main.css"  rel="stylesheet" type="text/css">
     <script src="./jquery-2.1.1.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="./bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="./bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="./bower_components/angular-animate/angular-animate.js"></script>
     <script type="text/javascript" src="./waitstaff.js"></script>
 </head>
-<body>
+<body ng-controller="MainCtrl">
     <div class="container">
         <h1>Waitstaff Calculator</h1> 
         <ul class="linkbar">
@@ -19,7 +21,10 @@
          --><li><a href="#/earnings">My Earnings</a></li>
         </ul>
 
-        <div class="theview" ng-view></div>
+        <div ng-view class="theview fadeInRight fadeOutDownBig"></div>
+        <!--<div ng-view class="theview fadeInRight"></div>-->
+        <!--<div ng-include="htemplate"></div>-->
+        <!--<div ng-include="ntemplate"></div>-->
 
     </div>
 </body>
