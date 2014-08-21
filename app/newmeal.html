@@ -33,15 +33,15 @@
         <table>
             <tr>
                 <td class="textcol">Subtotal:</td>
-                <td>${{subtotal|number:2}}</td>
+                <td>{{calcSubtotal() | currency}}</td>
             </tr>
             <tr>
                 <td class="textcol bottom-border">Tip:</td>
-                <td class="bottom-border">${{tip|number:2}}</td>
+                <td class="bottom-border">{{calcTip() | currency}}</td>
             </tr>
             <tr>
                 <td class="textcol">Total:</td>
-                <td>${{total|number:2}}</td>
+                <td>{{calcTotal() | currency}}</td>
             </tr>
         </table>
     </section>
