@@ -134,109 +134,40 @@ button {
 }
 
 
-/**************/
-/* Animations */
-/**************/
+/********************************/
+/* Daniel Eden's CSS Animations */
+/********************************/
 
+.fadeInRight {
+    /* The base .fadeInRight from animate.css must be disabled to enable
+     * ngAnimate and still use the base keyframes defined in animate.css. */
+    -webkit-animation-name: nullkeyframe;
+            animation-name: nullkeyframe;
+}
 .fadeInRight.ng-enter {
     -webkit-animation: 1.3s fadeInRight;
             animation: 1.3s fadeInRight;
 }
 
-@-webkit-keyframes fadeInRight {
-    0% {
-        opacity: 0;
-        -webkit-transform: translate3d(100%, 0, 0);
-                transform: translate3d(100%, 0, 0);
-    }
-
-    100% {
-        opacity: 1;
-        -webkit-transform: none;
-                transform: none;
-    }
+.fadeOutDownBig {
+    /* The base .fadeOutDownBig from animate.css must be disabled to enable
+     * ngAnimate and still use the base keyframes defined in animate.css. */
+    -webkit-animation-name: nullkeyframe;
+            animation-name: nullkeyframe;
 }
-
-@keyframes fadeInRight {
-    0% {
-        opacity: 0;
-        -webkit-transform: translate3d(100%, 0, 0);
-            -ms-transform: translate3d(100%, 0, 0);
-                transform: translate3d(100%, 0, 0);
-    }
-
-    100% {
-        opacity: 1;
-        -webkit-transform: none;
-            -ms-transform: none;
-                transform: none;
-    }
-}
-
 .fadeOutDownBig.ng-leave {
     -webkit-animation: 0.8s fadeOutDownBig;
             animation: 0.8s fadeOutDownBig;
 }
 
-@-webkit-keyframes fadeOutDownBig {
-    from { opacity: 1; }
-    to {
-        opacity: 0;
-        -webkit-transform: translate3d(0, 2000px, 0);
-                transform: translate3d(0, 2000px, 0);
-    }
+.shake {
+    /* The base .shake from animate.css must be disabled to enable
+     * ngAnimate and still use the base keyframes defined in animate.css. */
+    -webkit-animation-name: nullkeyframe;
+            animation-name: nullkeyframe;
 }
-
-@keyframes fadeOutDownBig {
-    from { opacity: 1; }
-    to {
-        opacity: 0;
-        -webkit-transform: translate3d(0, 2000px, 0);
-            -ms-transform: translate3d(0, 2000px, 0);
-                transform: translate3d(0, 2000px, 0);
-  }
-}
-
-
 .shake-add, .shake-remove {
     -webkit-animation: 0.5s shake;
             animation: 0.5s shake;
-}
-
-@-webkit-keyframes shake {
-    0%, 100% {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-
-    10%, 30%, 50%, 70%, 90% {
-        -webkit-transform: translate3d(-10px, 0, 0);
-        transform: translate3d(-10px, 0, 0);
-    }
-
-    20%, 40%, 60%, 80% {
-        -webkit-transform: translate3d(10px, 0, 0);
-        transform: translate3d(10px, 0, 0);
-    }
-}
-
-@keyframes shake {
-    0%, 100% {
-        -webkit-transform: translate3d(0, 0, 0);
-        -ms-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-
-    10%, 30%, 50%, 70%, 90% {
-        -webkit-transform: translate3d(-10px, 0, 0);
-        -ms-transform: translate3d(-10px, 0, 0);
-        transform: translate3d(-10px, 0, 0);
-    }
-
-    20%, 40%, 60%, 80% {
-        -webkit-transform: translate3d(10px, 0, 0);
-        -ms-transform: translate3d(10px, 0, 0);
-        transform: translate3d(10px, 0, 0);
-    }
 }
 
