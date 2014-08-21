@@ -21,12 +21,6 @@ angular.module('ngWaitstaffApp', ['ngRoute', 'ngAnimate'])
 .controller('HomeCtrl', function($scope) {
 })
 
-.controller('MainCtrl', function($scope) {
-    $scope.htemplate = 'home.html';
-    $scope.ntemplate = 'newmeal.html';
-    $scope.etemplate = 'earnings.html';
-})
-
 .controller('NewMealCtrl', function($scope, earnings, DEFAULT_TAX_RATE) {
     $scope.doShake = false;
     $scope.data = {};
